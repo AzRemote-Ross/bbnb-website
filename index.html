@@ -14,6 +14,16 @@
             font-family: 'Inter', sans-serif;
         }
     </style>
+    <script>
+        // This script is placed in the <head> to prevent a "flash of unstyled content" (FOUC).
+        // It checks for a theme preference in localStorage or the user's OS settings
+        // and applies the 'dark' class to the <html> element before the body is rendered.
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark')
+        } else {
+          document.documentElement.classList.remove('dark')
+        }
+    </script>
 </head>
 <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-500">
 
@@ -103,12 +113,16 @@
             langSwitcher.textContent = selectedContent.langSwitcher;
         }
 
-        // --- DARK MODE LOGIC (REVISED & FIXED) ---
+        // --- DARK MODE LOGIC ---
+        // The core logic is in two parts:
+        // 1. An inline script in the <head> to set the theme class on <html> before render, preventing FOUC.
+        // 2. The functions and event listeners below to handle user interaction and UI synchronization.
+
         function setTheme(theme) {
-            // Save the user's preference
+            // Save the user's preference to localStorage.
             localStorage.setItem('theme', theme);
             
-            // Apply the theme to the page
+            // Apply the theme to the <html> element and update the icons.
             if (theme === 'dark') {
                 htmlElement.classList.add('dark');
                 themeIconLight.classList.add('hidden');
@@ -127,19 +141,22 @@
         });
 
         themeSwitcher.addEventListener('click', () => {
-            // Check current theme from localStorage to decide the new theme
-            const newTheme = localStorage.getItem('theme') === 'dark' ? 'light' : 'dark';
+            // Toggle the theme based on the current state of the <html> element.
+            const newTheme = htmlElement.classList.contains('dark') ? 'light' : 'dark';
             setTheme(newTheme);
         });
         
         // --- INITIALIZATION ---
         document.addEventListener('DOMContentLoaded', () => {
-            // Set initial language
+            // Set initial language.
             setLanguage();
 
-            // Determine and set initial theme
-            const initialTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-            setTheme(initialTheme);
+            // The theme class is set by the script in the <head>. This part of the script
+            // simply ensures the UI (icons) and localStorage are synchronized with the
+            // current theme.
+            const currentTheme = htmlElement.classList.contains('dark') ? 'dark' : 'light';
+            // Calling setTheme ensures the icons and localStorage are correctly set on load.
+            setTheme(currentTheme);
         });
 
     </script>
