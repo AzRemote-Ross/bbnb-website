@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BBnB Barbershop</title>
-    
+    <title>Menu - BBnB Barbershop</title>
+
     <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,7 +34,7 @@
             transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
         }
     </style>
-    
+
     <!-- Configuration for Tailwind dark mode -->
     <script>
         tailwind.config = {
@@ -59,7 +59,7 @@
             <div class="flex items-center">
                 <!-- USER ACTION: Replace the 'src' below with the path to your logo file (e.g., './logo.png') -->
                 <img src="https://placehold.co/96x96/1f2937/FFD700?text=B" alt="BBnB Logo" class="h-12 w-12 mr-3 rounded-full">
-                <span class="font-black text-2xl graffiti-text text-gray-900 dark:text-white">BBnB</span>
+                <a href="index.html" class="font-black text-2xl graffiti-text text-gray-900 dark:text-white">BBnB</a>
             </div>
 
             <!-- Desktop Menu -->
@@ -88,86 +88,198 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section id="home" class="container mx-auto px-6 py-24 flex flex-col md:flex-row items-center justify-center text-center md:text-left">
-            <div class="md:w-1/2 mb-10 md:mb-0">
-                <h1 class="text-5xl md:text-7xl font-black mb-4 graffiti-text" data-translate="hero_title">Style Redefined.</h1>
-                <p class="text-lg mb-8" data-translate="hero_subtitle">Experience the art of grooming at BBnB. Where classic cuts meet modern vibes.</p>
-                <a href="#contact" class="btn-primary" data-translate="hero_button">Book Now</a>
-            </div>
-            <div class="md:w-1/2 flex justify-center">
-                <!-- USER ACTION: Replace the 'src' below with the path to your logo file (e.g., './logo.png') -->
-                <img src="https://placehold.co/400x400/1f2937/FFD700?text=BBnB" alt="BBnB Barbershop Logo" class="w-2/3 md:w-full max-w-md rounded-lg">
-            </div>
-        </section>
-
-
         <!-- Services Section -->
         <section id="services" class="bg-gray-100 dark:bg-gray-800 py-20">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl font-bold text-center mb-4" data-translate="services_title">Our Menu</h2>
-                <p class="text-lg mb-8" data-translate="services_subtitle">From classic cuts to modern styles, we have something for everyone.</p>
-                <a href="menu.html" class="btn-primary" data-translate="services_button">View Full Menu</a>
-            </div>
-        </section>
-
-        <!-- Gallery Section -->
-        <section id="gallery" class="py-20">
             <div class="container mx-auto px-6">
-                <h2 class="text-4xl font-bold text-center mb-12" data-translate="gallery_title">Our Work</h2>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="grid gap-4">
-                        <div><img class="h-auto max-w-full rounded-lg shadow-lg" src="https://placehold.co/500x700/1f2937/ffffff?text=Style+1" alt="Barber work 1"></div>
-                        <div><img class="h-auto max-w-full rounded-lg shadow-lg" src="https://placehold.co/500x500/1f2937/ffffff?text=Style+2" alt="Barber work 2"></div>
-                    </div>
-                    <div class="grid gap-4">
-                        <div><img class="h-auto max-w-full rounded-lg shadow-lg" src="https://placehold.co/500x500/1f2937/ffffff?text=Style+3" alt="Barber work 3"></div>
-                        <div><img class="h-auto max-w-full rounded-lg shadow-lg" src="https://placehold.co/500x700/1f2937/ffffff?text=Style+4" alt="Barber work 4"></div>
-                    </div>
-                    <div class="grid gap-4">
-                        <div><img class="h-auto max-w-full rounded-lg shadow-lg" src="https://placehold.co/500x700/1f2937/ffffff?text=Style+5" alt="Barber work 5"></div>
-                        <div><img class="h-auto max-w-full rounded-lg shadow-lg" src="https://placehold.co/500x500/1f2937/ffffff?text=Style+6" alt="Barber work 6"></div>
-                    </div>
-                     <div class="grid gap-4">
-                        <div><img class="h-auto max-w-full rounded-lg shadow-lg" src="https://placehold.co/500x500/1f2937/ffffff?text=Style+7" alt="Barber work 7"></div>
-                        <div><img class="h-auto max-w-full rounded-lg shadow-lg" src="https://placehold.co/500x700/1f2937/ffffff?text=Style+8" alt="Barber work 8"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                <h2 class="text-4xl font-bold text-center mb-12" data-translate="services_title">Our Menu</h2>
 
-        <!-- Contact Section -->
-        <section id="contact" class="bg-gray-100 dark:bg-gray-800 py-20">
-            <div class="container mx-auto px-6">
-                <h2 class="text-4xl font-bold text-center mb-12" data-translate="contact_title">Get In Touch</h2>
-                <div class="max-w-4xl mx-auto flex flex-col md:flex-row gap-10">
-                    <!-- Contact Form -->
-                    <div class="md:w-2/3 bg-white dark:bg-gray-900 p-8 rounded-lg shadow-lg">
-                        <form>
-                            <div class="mb-4">
-                                <label for="name" class="block mb-2 font-bold" data-translate="form_name_label">Name</label>
-                                <input type="text" id="name" name="name" class="w-full px-3 py-2 border rounded-lg bg-gray-200 dark:bg-gray-700 border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-400" data-translate="form_name_placeholder" placeholder="Your Name">
+                <!-- CUT Category -->
+                <div class="mb-16">
+                    <h3 class="text-3xl font-bold text-center mb-8" data-translate="category_cut">CUT</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                            <img src="https://placehold.co/500x500/1f2937/FFD700?text=Men's+Cut" alt="Men's Cut" class="w-full h-48 object-cover">
+                            <div class="p-6 text-center">
+                                <h4 class="text-xl font-bold mb-2" data-translate="cut_mens_name">MENs</h4>
+                                <p class="mb-4 text-sm" data-translate="cut_mens_desc">Includes shampoo & shaving</p>
+                                <p class="text-xl font-bold text-yellow-400">¥3,800</p>
                             </div>
-                            <div class="mb-4">
-                                <label for="email" class="block mb-2 font-bold" data-translate="form_email_label">Email</label>
-                                <input type="email" id="email" name="email" class="w-full px-3 py-2 border rounded-lg bg-gray-200 dark:bg-gray-700 border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-400" data-translate="form_email_placeholder" placeholder="Your Email">
+                        </div>
+                        <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                            <img src="https://placehold.co/500x500/1f2937/FFD700?text=Woman's+Cut" alt="Woman's Cut" class="w-full h-48 object-cover">
+                            <div class="p-6 text-center">
+                                <h4 class="text-xl font-bold mb-2" data-translate="cut_woman_name">Woman</h4>
+                                <p class="mb-4 text-sm" data-translate="cut_woman_desc">Includes shampoo & shaving</p>
+                                <p class="text-xl font-bold text-yellow-400">¥4,300</p>
                             </div>
-                            <div class="mb-4">
-                                <label for="message" class="block mb-2 font-bold" data-translate="form_message_label">Message</label>
-                                <textarea id="message" name="message" rows="4" class="w-full px-3 py-2 border rounded-lg bg-gray-200 dark:bg-gray-700 border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-400" data-translate="form_message_placeholder" placeholder="Your Message"></textarea>
+                        </div>
+                        <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                            <img src="https://placehold.co/500x500/1f2937/FFD700?text=Kid's+Cut" alt="Kid's Cut" class="w-full h-48 object-cover">
+                            <div class="p-6 text-center">
+                                <h4 class="text-xl font-bold mb-2" data-translate="cut_kids_name">Kids</h4>
+                                <p class="mb-4 text-sm" data-translate="cut_kids_desc">Up to junior high school</p>
+                                <p class="text-xl font-bold text-yellow-400">¥2,800</p>
                             </div>
-                            <button type="submit" class="btn-primary w-full" data-translate="form_submit_button">Send Message</button>
-                        </form>
-                    </div>
-                    <!-- Contact Info -->
-                    <div class="md:w-1/3">
-                         <div class="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-lg h-full">
-                            <h3 class="text-2xl font-bold mb-4" data-translate="info_title">Contact Info</h3>
-                            <p class="mb-4" data-translate="info_address_title"><strong>Address:</strong><br>123 Cool Street, Shibuya<br>Tokyo, Japan 150-0041</p>
-                            <p data-translate="info_hours_title"><strong>Hours:</strong><br>Tue - Fri: 10am - 8pm<br>Sat - Sun: 9am - 6pm</p>
+                        </div>
+                        <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                            <img src="https://placehold.co/500x500/1f2937/FFD700?text=Buzz+Cut" alt="Buzz Cut" class="w-full h-48 object-cover">
+                            <div class="p-6 text-center">
+                                <h4 class="text-xl font-bold mb-2" data-translate="cut_buzz_name">Buzz</h4>
+                                <p class="mb-4 text-sm" data-translate="cut_buzz_desc">All targets</p>
+                                <p class="text-xl font-bold text-yellow-400">¥1,300</p>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Color Category -->
+                <div class="mb-16">
+                    <h3 class="text-3xl font-bold text-center mb-8" data-translate="category_color">Color</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                            <img src="https://placehold.co/500x500/1f2937/FFD700?text=Men's+Color" alt="Men's Color" class="w-full h-48 object-cover">
+                            <div class="p-6 text-center">
+                                <h4 class="text-xl font-bold mb-2" data-translate="color_mens_name">MENs</h4>
+                                <p class="mb-4 text-sm" data-translate="color_mens_desc">Gray & fashion color</p>
+                                <p class="text-xl font-bold text-yellow-400">¥4,300~</p>
+                            </div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                            <img src="https://placehold.co/500x500/1f2937/FFD700?text=Woman's+Color" alt="Woman's Color" class="w-full h-48 object-cover">
+                            <div class="p-6 text-center">
+                                <h4 class="text-xl font-bold mb-2" data-translate="color_woman_name">Woman</h4>
+                                <p class="mb-4 text-sm" data-translate="color_woman_desc">Gray & fashion color</p>
+                                <p class="text-xl font-bold text-yellow-400">¥5,300~</p>
+                            </div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                            <img src="https://placehold.co/500x500/1f2937/FFD700?text=Bleach" alt="Bleach" class="w-full h-48 object-cover">
+                            <div class="p-6 text-center">
+                                <h4 class="text-xl font-bold mb-2" data-translate="color_breach_name">Bleach</h4>
+                                <p class="mb-4 text-sm" data-translate="color_breach_desc">All targets</p>
+                                <p class="text-xl font-bold text-yellow-400">¥7,500~</p>
+                            </div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                            <img src="https://placehold.co/500x500/1f2937/FFD700?text=Highlights" alt="Highlights" class="w-full h-48 object-cover">
+                            <div class="p-6 text-center">
+                                <h4 class="text-xl font-bold mb-2" data-translate="color_highlights_name">Highlights</h4>
+                                <p class="mb-4 text-sm" data-translate="color_highlights_desc">All targets</p>
+                                <p class="text-xl font-bold text-yellow-400">¥6,300</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Treatment Category -->
+                <div class="mb-16">
+                    <h3 class="text-3xl font-bold text-center mb-8" data-translate="category_treatment">Treatment</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                            <img src="https://placehold.co/500x500/1f2937/FFD700?text=In-shop+Treatment" alt="In-shop Treatment" class="w-full h-48 object-cover">
+                            <div class="p-6 text-center">
+                                <h4 class="text-xl font-bold mb-2" data-translate="treatment_inshop_name">In-shop Treatment</h4>
+                                <p class="mb-4 text-sm" data-translate="treatment_inshop_desc">Treatment</p>
+                                <p class="text-xl font-bold text-yellow-400">¥1,800</p>
+                            </div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                            <img src="https://placehold.co/500x500/1f2937/FFD700?text=Take+out" alt="Take out" class="w-full h-48 object-cover">
+                            <div class="p-6 text-center">
+                                <h4 class="text-xl font-bold mb-2" data-translate="treatment_takeout_name">Take out</h4>
+                                <p class="mb-4 text-sm" data-translate="treatment_takeout_desc"></p>
+                                <p class="text-xl font-bold text-yellow-400">¥3,850</p>
+                            </div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                            <img src="https://placehold.co/500x500/1f2937/FFD700?text=Shampoo+%26+Dry" alt="Shampoo & Dry" class="w-full h-48 object-cover">
+                            <div class="p-6 text-center">
+                                <h4 class="text-xl font-bold mb-2" data-translate="treatment_shampoo_name">Shampoo & Dry</h4>
+                                <p class="mb-4 text-sm" data-translate="treatment_shampoo_desc">Shampoo & Dry only</p>
+                                <p class="text-xl font-bold text-yellow-400">¥1,300</p>
+                            </div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                            <img src="https://placehold.co/500x500/1f2937/FFD700?text=Head+Spa" alt="Head Spa" class="w-full h-48 object-cover">
+                            <div class="p-6 text-center">
+                                <h4 class="text-xl font-bold mb-2" data-translate="treatment_spa_name">Head Spa</h4>
+                                <p class="mb-4 text-sm" data-translate="treatment_spa_desc">Head spa</p>
+                                <p class="text-xl font-bold text-yellow-400">¥3,300</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Another Hair Make Category -->
+                <div class="mb-16">
+                    <h3 class="text-3xl font-bold text-center mb-8" data-translate="category_another_hair_make">Another Hair Make</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+                        <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                            <img src="https://placehold.co/500x500/1f2937/FFD700?text=Hair+Adult" alt="Hair Adult" class="w-full h-48 object-cover">
+                            <div class="p-6 text-center">
+                                <h4 class="text-xl font-bold mb-2" data-translate="ahm_hair_adult_name">Hair Adult</h4>
+                                <p class="mb-4 text-sm" data-translate="ahm_hair_adult_desc">Hair make</p>
+                                <p class="text-xl font-bold text-yellow-400">¥4,300~</p>
+                            </div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                            <img src="https://placehold.co/500x500/1f2937/FFD700?text=Kids" alt="Kids" class="w-full h-48 object-cover">
+                            <div class="p-6 text-center">
+                                <h4 class="text-xl font-bold mb-2" data-translate="ahm_kids_name">Kids</h4>
+                                <p class="mb-4 text-sm" data-translate="ahm_kids_desc">Hair make</p>
+                                <p class="text-xl font-bold text-yellow-400">¥2,800</p>
+                            </div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                            <img src="https://placehold.co/500x500/1f2937/FFD700?text=KITADAN+Adult" alt="KITADAN Adult" class="w-full h-48 object-cover">
+                            <div class="p-6 text-center">
+                                <h4 class="text-xl font-bold mb-2" data-translate="ahm_kitadan_adult_name">KITADAN Adult</h4>
+                                <p class="mb-4 text-sm" data-translate="ahm_kitadan_adult_desc">KITADAN member</p>
+                                <p class="text-xl font-bold text-yellow-400">¥30,000~</p>
+                            </div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                            <img src="https://placehold.co/500x500/1f2937/FFD700?text=KITADAN+Kids" alt="KITADAN Kids" class="w-full h-48 object-cover">
+                            <div class="p-6 text-center">
+                                <h4 class="text-xl font-bold mb-2" data-translate="ahm_kitadan_kids_name">KITADAN Kids</h4>
+                                <p class="mb-4 text-sm" data-translate="ahm_kitadan_kids_desc">KITADAN member</p>
+                                <p class="text-xl font-bold text-yellow-400">¥15,000</p>
+                            </div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                            <img src="https://placehold.co/500x500/1f2937/FFD700?text=Make" alt="Make" class="w-full h-48 object-cover">
+                            <div class="p-6 text-center">
+                                <h4 class="text-xl font-bold mb-2" data-translate="ahm_make_name">Make</h4>
+                                <p class="mb-4 text-sm" data-translate="ahm_make_desc"></p>
+                                <p class="text-xl font-bold text-yellow-400">¥43,000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Beauty Course Category -->
+                <div class="mb-16">
+                    <h3 class="text-3xl font-bold text-center mb-8" data-translate="category_beauty_course">Beauty Course</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                            <img src="https://placehold.co/500x500/1f2937/FFD700?text=Beauty+Course" alt="Beauty Course" class="w-full h-48 object-cover">
+                            <div class="p-6 text-center">
+                                <h4 class="text-xl font-bold mb-2" data-translate="bc_beauty_course_name">Beauty Course</h4>
+                                <p class="mb-4 text-sm" data-translate="bc_beauty_course_desc">Face&pack, headspa, Treatment, included</p>
+                                <p class="text-xl font-bold text-yellow-400">¥60,000</p>
+                            </div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
+                            <img src="https://placehold.co/500x500/1f2937/FFD700?text=Bridal+Shaving" alt="Bridal Shaving" class="w-full h-48 object-cover">
+                            <div class="p-6 text-center">
+                                <h4 class="text-xl font-bold mb-2" data-translate="bc_bridal_shaving_name">Bridal Shaving</h4>
+                                <p class="mb-4 text-sm" data-translate="bc_bridal_shaving_desc">Face&pack, Back, decollete, nape, included</p>
+                                <p class="text-xl font-bold text-yellow-400">¥140,000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
     </main>
@@ -193,8 +305,6 @@
                     hero_subtitle: 'Experience the art of grooming at BBnB. Where classic cuts meet modern vibes.',
                     hero_button: 'Book Now',
                     services_title: 'Our Menu',
-                    services_subtitle: 'From classic cuts to modern styles, we have something for everyone.',
-                    services_button: 'View Full Menu',
                     gallery_title: 'Our Work',
                     contact_title: 'Get In Touch',
                     form_name_label: 'Name',
@@ -266,8 +376,6 @@
                     hero_subtitle: 'BBnBでグルーミングの芸術を体験してください。クラシックなカットとモダンな雰囲気が融合する場所。',
                     hero_button: '今すぐ予約',
                     services_title: 'メニュー',
-                    services_subtitle: 'クラシックなカットからモダンなスタイルまで、皆様に合ったメニューをご用意しております。',
-                    services_button: 'すべてのメニューを見る',
                     gallery_title: '私たちの仕事',
                     contact_title: 'お問い合わせ',
                     form_name_label: 'お名前',
@@ -338,7 +446,7 @@
             const setLanguage = (lang) => {
                 document.documentElement.lang = lang;
                 localStorage.setItem('language', lang);
-                
+
                 // Update button styles
                 langEnBtn.classList.toggle('bg-yellow-400', lang === 'en');
                 langEnBtn.classList.toggle('text-gray-900', lang === 'en');
