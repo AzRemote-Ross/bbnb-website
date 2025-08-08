@@ -1,402 +1,147 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BBnB Barbershop</title>
-    
-    <!-- Tailwind CSS for styling -->
+    <title>BBnB Barbershop - Website Renewal</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
-
-    <!-- Custom Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
+        /* Use the Inter font family */
         body {
             font-family: 'Inter', sans-serif;
         }
-        /* Style for the graffiti/urban theme */
-        .graffiti-text {
-            font-weight: 900;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-        .btn-primary {
-            @apply bg-yellow-400 text-gray-900 font-bold py-3 px-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300;
-        }
-        .btn-secondary {
-            @apply bg-gray-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300;
-        }
-        /* Smooth transitions for color changes */
-        body, header, footer, section {
-            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-        }
     </style>
-    
-    <!-- Configuration for Tailwind dark mode -->
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-500">
+
+    <!-- Controls for Theme and Language -->
+    <div class="absolute top-4 right-4 flex items-center space-x-4">
+        <!-- Language Switcher -->
+        <button id="lang-switcher" class="px-3 py-2 bg-gray-200 dark:bg-gray-700 rounded-md font-semibold text-sm transition-transform transform hover:scale-105"></button>
+
+        <!-- Theme (Dark/Light Mode) Switcher -->
+        <button id="theme-switcher" class="p-2 bg-gray-200 dark:bg-gray-700 rounded-md transition-transform transform hover:scale-105">
+            <svg id="theme-icon-light" class="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+            <svg id="theme-icon-dark" class="w-5 h-5 text-gray-200 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        </button>
+    </div>
+
+    <div class="min-h-screen flex flex-col items-center justify-center p-4 text-center">
+        
+        <!-- Brand Name -->
+        <h2 class="text-5xl md:text-7xl font-black text-gray-800 dark:text-gray-200 mb-1">BBnB</h2>
+
+        <!-- Title -->
+        <h1 id="title" class="text-4xl md:text-6xl font-bold tracking-tight text-yellow-500 dark:text-yellow-400 mb-2"></h1>
+        
+        <!-- Subtitle -->
+        <p id="subtitle" class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-xl"></p>
+
+        <!-- Reservation Info -->
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md max-w-sm w-full mb-8">
+            <h2 id="reservation-title" class="text-2xl font-bold mb-3"></h2>
+            <p id="reservation-info" class="text-gray-700 dark:text-gray-200 mb-4"></p>
+            <a href="tel:050-5470-4832" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105">
+                050-5470-4832
+            </a>
+        </div>
+
+        <!-- Social and Map Links -->
+        <div class="flex items-center space-x-6">
+            <!-- Instagram Link -->
+            <a href="https://www.instagram.com/bbnb.barbershop" target="_blank" rel="noopener noreferrer" class="text-gray-500 dark:text-gray-400 hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c-4.04.004-4.55.018-6.138.09c-1.583.072-2.67.346-3.638 1.314C1.572 4.37.296 5.458.224 7.042c-.072 1.587-.086 2.097-.09 6.136c-.004 4.04-.018 4.55.09 6.138c.072 1.583.346 2.67 1.314 3.638c.968.968 2.055 1.242 3.638 1.314c1.587.072 2.097.086 6.136.09c4.04.004 4.55.018 6.138-.09c1.583-.072 2.67-.346 3.638-1.314c.968-.968 1.242-2.055 1.314-3.638c.072-1.587.086-2.097.09-6.136c.004-4.04.018-4.55-.09-6.138c-.072-1.583-.346-2.67-1.314-3.638C20.532 2.37 19.444 2.096 17.86 2.024C16.276 1.952 15.766 1.938 11.728 1.938h-.01zM12 1.938c-4.04 0-4.55.018-6.136.09c-1.588.072-2.67.346-3.638 1.314c-.968.968-1.242 2.055-1.314 3.638C.84 8.566.826 9.076.822 13.114c-.004 4.04.018 4.55.09 6.136c.072 1.588.346 2.67 1.314 3.638c.968.968 2.055 1.242 3.638 1.314c1.587.072 2.097.086 6.136.09s4.55-.018 6.138-.09c1.583-.072 2.67-.346 3.638-1.314c.968-.968 1.242-2.055 1.314-3.638c.072-1.587.086-2.097.09-6.136s-.018-4.55-.09-6.138c-.072-1.583-.346-2.67-1.314-3.638c-.968-.968-2.055-1.242-3.638-1.314C16.862 2.024 16.352 2.01 12.315 2h.01zm0 3.864c-3.31 0-6 2.69-6 6s2.69 6 6 6s6-2.69 6-6s-2.69-6-6-6zm0 9.648c-1.99 0-3.6-1.61-3.6-3.6s1.61-3.6 3.6-3.6s3.6 1.61 3.6 3.6s-1.61 3.6-3.6 3.6zm6.405-9.66c-.743 0-1.345.602-1.345 1.345s.602 1.345 1.345 1.345s1.345-.602 1.345-1.345s-.602-1.345-1.345-1.345z" clip-rule="evenodd" /></svg>
+            </a>
+            <!-- Google Maps Link -->
+            <a href="https://maps.app.goo.gl/6AFadN8f1iYxqQ7a6" target="_blank" rel="noopener noreferrer" class="text-gray-500 dark:text-gray-400 hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </a>
+        </div>
+    </div>
+
     <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        'brand-yellow': '#FFD700',
-                        'brand-cyan': '#00FFFF',
-                    }
-                }
+        // --- DOM ELEMENT REFERENCES ---
+        const langSwitcher = document.getElementById('lang-switcher');
+        const themeSwitcher = document.getElementById('theme-switcher');
+        const themeIconLight = document.getElementById('theme-icon-light');
+        const themeIconDark = document.getElementById('theme-icon-dark');
+        const htmlElement = document.documentElement;
+
+        // --- CONTENT DATA ---
+        const content = {
+            en: {
+                title: "Website Renewal",
+                subtitle: "Our site is getting a fresh look! We're open Wednesday to Sunday, 9am - 5pm.",
+                reservationTitle: "Reservations",
+                reservationInfo: "To book your spot, please call Natsumi at:",
+                langSwitcher: "日本語"
+            },
+            ja: {
+                title: "ウェブサイトリニューアル中",
+                subtitle: "ウェブサイトは現在リニューアル中です。営業時間は水曜日から日曜日の午前9時から午後5時までとなります。",
+                reservationTitle: "ご予約",
+                reservationInfo: "ご予約は、ナツミまでお電話ください：",
+                langSwitcher: "English"
+            }
+        };
+
+        // --- LANGUAGE LOGIC ---
+        function setLanguage(lang) {
+            const currentLang = lang || localStorage.getItem('lang') || (navigator.language.startsWith('ja') ? 'ja' : 'en');
+            localStorage.setItem('lang', currentLang);
+            htmlElement.lang = currentLang;
+
+            const selectedContent = content[currentLang];
+            
+            document.getElementById('title').textContent = selectedContent.title;
+            document.getElementById('subtitle').textContent = selectedContent.subtitle;
+            document.getElementById('reservation-title').textContent = selectedContent.reservationTitle;
+            document.getElementById('reservation-info').textContent = selectedContent.reservationInfo;
+            langSwitcher.textContent = selectedContent.langSwitcher;
+        }
+
+        // --- DARK MODE LOGIC (REVISED & FIXED) ---
+        function setTheme(theme) {
+            // Save the user's preference
+            localStorage.setItem('theme', theme);
+            
+            // Apply the theme to the page
+            if (theme === 'dark') {
+                htmlElement.classList.add('dark');
+                themeIconLight.classList.add('hidden');
+                themeIconDark.classList.remove('hidden');
+            } else {
+                htmlElement.classList.remove('dark');
+                themeIconLight.classList.remove('hidden');
+                themeIconDark.classList.add('hidden');
             }
         }
-    </script>
-</head>
-<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
 
-    <!-- Header & Navigation -->
-    <header class="bg-gray-100 dark:bg-gray-800/50 backdrop-blur-sm sticky top-0 z-50 shadow-md">
-        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <!-- Logo -->
-            <div class="flex items-center">
-                <!-- USER ACTION: Replace the 'src' below with the path to your logo file (e.g., './logo.png') -->
-                <img src="https://placehold.co/96x96/1f2937/FFD700?text=B" alt="BBnB Logo" class="h-12 w-12 mr-3 rounded-full">
-                <span class="font-black text-2xl graffiti-text text-gray-900 dark:text-white">BBnB</span>
-            </div>
-
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex items-center space-x-6">
-                <a href="index.html#home" class="hover:text-yellow-400 transition-colors duration-300" data-translate="nav_home">Home</a>
-                <a href="menu.html" class="hover:text-yellow-400 transition-colors duration-300" data-translate="nav_services">Services</a>
-                <a href="index.html#gallery" class="hover:text-yellow-400 transition-colors duration-300" data-translate="nav_gallery">Gallery</a>
-                <a href="index.html#contact" class="hover:text-yellow-400 transition-colors duration-300" data-translate="nav_contact">Contact</a>
-            </div>
-
-            <!-- Right side controls: Language & Theme -->
-            <div class="flex items-center space-x-4">
-                <!-- Language Switcher -->
-                <div>
-                    <button id="lang-en" class="font-bold text-sm px-2 py-1 rounded-md">EN</button>
-                    <span class="text-gray-400">|</span>
-                    <button id="lang-ja" class="font-bold text-sm px-2 py-1 rounded-md">JP</button>
-                </div>
-                <!-- Theme Toggle -->
-                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300">
-                    <svg id="theme-toggle-dark-icon" class="hidden h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-                    <svg id="theme-toggle-light-icon" class="hidden h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.121-3.536a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM10 18a1 1 0 01-1-1v-1a1 1 0 112 0v1a1 1 0 01-1 1zM4.95 15.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707a1 1 0 001.414-1.414zM2.121 6.464a1 1 0 011.414 0l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 010-1.414zM18 10a1 1 0 01-1-1h-1a1 1 0 110-2h1a1 1 0 011 1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
-                </button>
-            </div>
-        </nav>
-    </header>
-
-    <main>
-        <!-- Hero Section -->
-        <section id="home" class="container mx-auto px-6 py-24 flex flex-col md:flex-row items-center justify-center text-center md:text-left">
-            <div class="md:w-1/2 mb-10 md:mb-0">
-                <h1 class="text-5xl md:text-7xl font-black mb-4 graffiti-text" data-translate="hero_title">Style Redefined.</h1>
-                <p class="text-lg mb-8" data-translate="hero_subtitle">Experience the art of grooming at BBnB. Where classic cuts meet modern vibes.</p>
-                <a href="#contact" class="btn-primary" data-translate="hero_button">Book Now</a>
-            </div>
-            <div class="md:w-1/2 flex justify-center">
-                <!-- USER ACTION: Replace the 'src' below with the path to your logo file (e.g., './logo.png') -->
-                <img src="https://placehold.co/400x400/1f2937/FFD700?text=BBnB" alt="BBnB Barbershop Logo" class="w-2/3 md:w-full max-w-md rounded-lg">
-            </div>
-        </section>
-
-
-        <!-- Services Section -->
-        <section id="services" class="bg-gray-100 dark:bg-gray-800 py-20">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl font-bold text-center mb-4" data-translate="services_title">Our Menu</h2>
-                <p class="text-lg mb-8" data-translate="services_subtitle">From classic cuts to modern styles, we have something for everyone.</p>
-                <a href="menu.html" class="btn-primary" data-translate="services_button">View Full Menu</a>
-            </div>
-        </section>
-
-        <!-- Gallery Section -->
-        <section id="gallery" class="py-20">
-            <div class="container mx-auto px-6">
-                <h2 class="text-4xl font-bold text-center mb-12" data-translate="gallery_title">Our Work</h2>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="grid gap-4">
-                        <div><img class="h-auto max-w-full rounded-lg shadow-lg" src="https://placehold.co/500x700/1f2937/ffffff?text=Style+1" alt="Barber work 1"></div>
-                        <div><img class="h-auto max-w-full rounded-lg shadow-lg" src="https://placehold.co/500x500/1f2937/ffffff?text=Style+2" alt="Barber work 2"></div>
-                    </div>
-                    <div class="grid gap-4">
-                        <div><img class="h-auto max-w-full rounded-lg shadow-lg" src="https://placehold.co/500x500/1f2937/ffffff?text=Style+3" alt="Barber work 3"></div>
-                        <div><img class="h-auto max-w-full rounded-lg shadow-lg" src="https://placehold.co/500x700/1f2937/ffffff?text=Style+4" alt="Barber work 4"></div>
-                    </div>
-                    <div class="grid gap-4">
-                        <div><img class="h-auto max-w-full rounded-lg shadow-lg" src="https://placehold.co/500x700/1f2937/ffffff?text=Style+5" alt="Barber work 5"></div>
-                        <div><img class="h-auto max-w-full rounded-lg shadow-lg" src="https://placehold.co/500x500/1f2937/ffffff?text=Style+6" alt="Barber work 6"></div>
-                    </div>
-                     <div class="grid gap-4">
-                        <div><img class="h-auto max-w-full rounded-lg shadow-lg" src="https://placehold.co/500x500/1f2937/ffffff?text=Style+7" alt="Barber work 7"></div>
-                        <div><img class="h-auto max-w-full rounded-lg shadow-lg" src="https://placehold.co/500x700/1f2937/ffffff?text=Style+8" alt="Barber work 8"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="bg-gray-100 dark:bg-gray-800 py-20">
-            <div class="container mx-auto px-6">
-                <h2 class="text-4xl font-bold text-center mb-12" data-translate="contact_title">Get In Touch</h2>
-                <div class="max-w-4xl mx-auto flex flex-col md:flex-row gap-10">
-                    <!-- Contact Form -->
-                    <div class="md:w-2/3 bg-white dark:bg-gray-900 p-8 rounded-lg shadow-lg">
-                        <form>
-                            <div class="mb-4">
-                                <label for="name" class="block mb-2 font-bold" data-translate="form_name_label">Name</label>
-                                <input type="text" id="name" name="name" class="w-full px-3 py-2 border rounded-lg bg-gray-200 dark:bg-gray-700 border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-400" data-translate="form_name_placeholder" placeholder="Your Name">
-                            </div>
-                            <div class="mb-4">
-                                <label for="email" class="block mb-2 font-bold" data-translate="form_email_label">Email</label>
-                                <input type="email" id="email" name="email" class="w-full px-3 py-2 border rounded-lg bg-gray-200 dark:bg-gray-700 border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-400" data-translate="form_email_placeholder" placeholder="Your Email">
-                            </div>
-                            <div class="mb-4">
-                                <label for="message" class="block mb-2 font-bold" data-translate="form_message_label">Message</label>
-                                <textarea id="message" name="message" rows="4" class="w-full px-3 py-2 border rounded-lg bg-gray-200 dark:bg-gray-700 border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-400" data-translate="form_message_placeholder" placeholder="Your Message"></textarea>
-                            </div>
-                            <button type="submit" class="btn-primary w-full" data-translate="form_submit_button">Send Message</button>
-                        </form>
-                    </div>
-                    <!-- Contact Info -->
-                    <div class="md:w-1/3">
-                         <div class="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-lg h-full">
-                            <h3 class="text-2xl font-bold mb-4" data-translate="info_title">Contact Info</h3>
-                            <p class="mb-4" data-translate="info_address_title"><strong>Address:</strong><br>123 Cool Street, Shibuya<br>Tokyo, Japan 150-0041</p>
-                            <p data-translate="info_hours_title"><strong>Hours:</strong><br>Tue - Fri: 10am - 8pm<br>Sat - Sun: 9am - 6pm</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-gray-300 py-8">
-        <div class="container mx-auto px-6 text-center">
-            <p>&copy; <span id="footer-year"></span> BBnB Barbershop. All Rights Reserved.</p>
-            <p data-translate="footer_credit">Designed with style.</p>
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // --- TRANSLATION (i18n) LOGIC ---
-            const translations = {
-                en: {
-                    nav_home: 'Home',
-                    nav_services: 'Services',
-                    nav_gallery: 'Gallery',
-                    nav_contact: 'Contact',
-                    hero_title: 'Style Redefined.',
-                    hero_subtitle: 'Experience the art of grooming at BBnB. Where classic cuts meet modern vibes.',
-                    hero_button: 'Book Now',
-                    services_title: 'Our Menu',
-                    services_subtitle: 'From classic cuts to modern styles, we have something for everyone.',
-                    services_button: 'View Full Menu',
-                    gallery_title: 'Our Work',
-                    contact_title: 'Get In Touch',
-                    form_name_label: 'Name',
-                    form_name_placeholder: 'Your Name',
-                    form_email_label: 'Email',
-                    form_email_placeholder: 'Your Email',
-                    form_message_label: 'Message',
-                    form_message_placeholder: 'Your Message',
-                    form_submit_button: 'Send Message',
-                    info_title: 'Contact Info',
-                    info_address_title: 'Address:',
-                    info_hours_title: 'Hours:',
-                    footer_credit: 'Designed with style.',
-
-                    category_cut: 'CUT',
-                    cut_mens_name: 'MENs',
-                    cut_mens_desc: 'Includes shampoo & shaving',
-                    cut_woman_name: 'Woman',
-                    cut_woman_desc: 'Includes shampoo & shaving',
-                    cut_kids_name: 'Kids',
-                    cut_kids_desc: 'Up to junior high school',
-                    cut_buzz_name: 'Buzz',
-                    cut_buzz_desc: 'For all',
-
-                    category_color: 'Color',
-                    color_mens_name: 'MENs',
-                    color_mens_desc: 'Gray & fashion color',
-                    color_woman_name: 'Woman',
-                    color_woman_desc: 'Gray & fashion color',
-                    color_breach_name: 'Bleach',
-                    color_breach_desc: 'For all',
-                    color_highlights_name: 'Highlights',
-                    color_highlights_desc: 'For all',
-
-                    category_treatment: 'Treatment',
-                    treatment_inshop_name: 'In-shop Treatment',
-                    treatment_inshop_desc: 'Treatment',
-                    treatment_takeout_name: 'Take out',
-                    treatment_takeout_desc: '',
-                    treatment_shampoo_name: 'Shampoo & Dry',
-                    treatment_shampoo_desc: 'Shampoo & Dry only',
-                    treatment_spa_name: 'Head Spa',
-                    treatment_spa_desc: 'Head spa',
-
-                    category_another_hair_make: 'Another Hair Make',
-                    ahm_hair_adult_name: 'Hair Adult',
-                    ahm_hair_adult_desc: 'Hair make',
-                    ahm_kids_name: 'Kids',
-                    ahm_kids_desc: 'Hair make',
-                    ahm_kitadan_adult_name: 'KITADAN Adult',
-                    ahm_kitadan_adult_desc: 'KITADAN member',
-                    ahm_kitadan_kids_name: 'KITADAN Kids',
-                    ahm_kitadan_kids_desc: 'KITADAN member',
-                    ahm_make_name: 'Make',
-                    ahm_make_desc: '',
-
-                    category_beauty_course: 'Beauty Course',
-                    bc_beauty_course_name: 'Beauty Course',
-                    bc_beauty_course_desc: 'Face&pack, headspa, Treatment, included',
-                    bc_bridal_shaving_name: 'Bridal Shaving',
-                    bc_bridal_shaving_desc: 'Face&pack, Back, decollete, nape, included'
-                },
-                ja: {
-                    nav_home: 'ホーム',
-                    nav_services: 'サービス',
-                    nav_gallery: 'ギャラリー',
-                    nav_contact: 'お問い合わせ',
-                    hero_title: '再定義されたスタイル。',
-                    hero_subtitle: 'BBnBでグルーミングの芸術を体験してください。クラシックなカットとモダンな雰囲気が融合する場所。',
-                    hero_button: '今すぐ予約',
-                    services_title: 'メニュー',
-                    services_subtitle: 'クラシックなカットからモダンなスタイルまで、皆様に合ったメニューをご用意しております。',
-                    services_button: 'すべてのメニューを見る',
-                    gallery_title: '私たちの仕事',
-                    contact_title: 'お問い合わせ',
-                    form_name_label: 'お名前',
-                    form_name_placeholder: 'あなたのお名前',
-                    form_email_label: 'メールアドレス',
-                    form_email_placeholder: 'あなたのメールアドレス',
-                    form_message_label: 'メッセージ',
-                    form_message_placeholder: 'メッセージ内容',
-                    form_submit_button: 'メッセージを送信',
-                    info_title: '連絡先情報',
-                    info_address_title: '住所:',
-                    info_hours_title: '営業時間:',
-                    footer_credit: 'スタイルを込めてデザイン。',
-
-                    category_cut: 'カット',
-                    cut_mens_name: 'メンズ',
-                    cut_mens_desc: 'シャンプー・シェービング込',
-                    cut_woman_name: 'レディース',
-                    cut_woman_desc: 'シャンプー・シェービング込',
-                    cut_kids_name: 'キッズ',
-                    cut_kids_desc: '中学生まで',
-                    cut_buzz_name: 'ボウズ',
-                    cut_buzz_desc: 'すべて対象',
-
-                    category_color: 'カラー',
-                    color_mens_name: 'メンズ',
-                    color_mens_desc: '白髪＆おしゃれ染',
-                    color_woman_name: 'レディース',
-                    color_woman_desc: '白髪＆おしゃれ染',
-                    color_breach_name: 'ブリーチ',
-                    color_breach_desc: 'すべて対象',
-                    color_highlights_name: 'ハイライト',
-                    color_highlights_desc: 'すべて対象',
-
-                    category_treatment: 'トリートメント',
-                    treatment_inshop_name: 'サロントリートメント',
-                    treatment_inshop_desc: 'トリートメント',
-                    treatment_takeout_name: 'お持ち帰りトリートメント',
-                    treatment_takeout_desc: '',
-                    treatment_shampoo_name: 'シャンプー＆ドライ',
-                    treatment_shampoo_desc: 'シャンプー＆ドライのみ',
-                    treatment_spa_name: 'ヘッドスパ',
-                    treatment_spa_desc: 'ヘッドスパ',
-
-                    category_another_hair_make: 'その他ヘアメイク',
-                    ahm_hair_adult_name: 'ヘアセット 大人',
-                    ahm_hair_adult_desc: 'ヘアメイク',
-                    ahm_kids_name: 'ヘアセット キッズ',
-                    ahm_kids_desc: 'ヘアメイク',
-                    ahm_kitadan_adult_name: 'キタダン 大人',
-                    ahm_kitadan_adult_desc: 'キタダンメンバー',
-                    ahm_kitadan_kids_name: 'キタダン 子供',
-                    ahm_kitadan_kids_desc: 'キタダンメンバー',
-                    ahm_make_name: 'メイク',
-                    ahm_make_desc: '',
-
-                    category_beauty_course: 'ビューティーコース',
-                    bc_beauty_course_name: 'ビューティーコース',
-                    bc_beauty_course_desc: 'シェーブ・パック・ヘッドスパ・トリートメント',
-                    bc_bridal_shaving_name: 'ブライダルシェービング',
-                    bc_bridal_shaving_desc: 'パック・背中・デコルテ・ネープ'
-                }
-            };
-
-            const langEnBtn = document.getElementById('lang-en');
-            const langJaBtn = document.getElementById('lang-ja');
-
-            const setLanguage = (lang) => {
-                document.documentElement.lang = lang;
-                localStorage.setItem('language', lang);
-                
-                // Update button styles
-                langEnBtn.classList.toggle('bg-yellow-400', lang === 'en');
-                langEnBtn.classList.toggle('text-gray-900', lang === 'en');
-                langJaBtn.classList.toggle('bg-yellow-400', lang === 'ja');
-                langJaBtn.classList.toggle('text-gray-900', lang === 'ja');
-
-                document.querySelectorAll('[data-translate]').forEach(el => {
-                    const key = el.getAttribute('data-translate');
-                    if (translations[lang] && translations[lang][key]) {
-                        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                           el.placeholder = translations[lang][key];
-                        } else {
-                           el.innerHTML = translations[lang][key];
-                        }
-                    }
-                });
-            };
-
-            langEnBtn.addEventListener('click', () => setLanguage('en'));
-            langJaBtn.addEventListener('click', () => setLanguage('ja'));
-
-            // Detect browser language or get from localStorage
-            const initialLang = localStorage.getItem('language') || (navigator.language.startsWith('ja') ? 'ja' : 'en');
-            setLanguage(initialLang);
-
-
-            // --- THEME (Light/Dark Mode) LOGIC ---
-            const themeToggleBtn = document.getElementById('theme-toggle');
-            const darkIcon = document.getElementById('theme-toggle-dark-icon');
-            const lightIcon = document.getElementById('theme-toggle-light-icon');
-
-            const applyTheme = (theme) => {
-                if (theme === 'dark') {
-                    document.documentElement.classList.add('dark');
-                    darkIcon.classList.remove('hidden');
-                    lightIcon.classList.add('hidden');
-                } else {
-                    document.documentElement.classList.remove('dark');
-                    darkIcon.classList.add('hidden');
-                    lightIcon.classList.remove('hidden');
-                }
-            };
-
-            themeToggleBtn.addEventListener('click', () => {
-                const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-                localStorage.setItem('theme', newTheme);
-                applyTheme(newTheme);
-            });
-
-            // Set initial theme based on localStorage or system preference
-            const initialTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-            applyTheme(initialTheme);
-
-
-            // --- FOOTER YEAR ---
-            document.getElementById('footer-year').textContent = new Date().getFullYear();
+        // --- EVENT LISTENERS ---
+        langSwitcher.addEventListener('click', () => {
+            const newLang = localStorage.getItem('lang') === 'ja' ? 'en' : 'ja';
+            setLanguage(newLang);
         });
+
+        themeSwitcher.addEventListener('click', () => {
+            // Check current theme from localStorage to decide the new theme
+            const newTheme = localStorage.getItem('theme') === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        });
+        
+        // --- INITIALIZATION ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set initial language
+            setLanguage();
+
+            // Determine and set initial theme
+            const initialTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            setTheme(initialTheme);
+        });
+
     </script>
 
 </body>
