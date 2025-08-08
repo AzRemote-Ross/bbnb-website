@@ -151,12 +151,15 @@
             // Set initial language.
             setLanguage();
 
-            // The theme class is set by the script in the <head>. This part of the script
-            // simply ensures the UI (icons) and localStorage are synchronized with the
-            // current theme.
-            const currentTheme = htmlElement.classList.contains('dark') ? 'dark' : 'light';
-            // Calling setTheme ensures the icons and localStorage are correctly set on load.
-            setTheme(currentTheme);
+            // The theme class is already set by the script in the <head>.
+            // This part of the script simply ensures the UI (icons) are synchronized.
+            if (document.documentElement.classList.contains('dark')) {
+                themeIconLight.classList.add('hidden');
+                themeIconDark.classList.remove('hidden');
+            } else {
+                themeIconLight.classList.remove('hidden');
+                themeIconDark.classList.add('hidden');
+            }
         });
 
     </script>
