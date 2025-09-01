@@ -1,1 +1,0 @@
-import{j as r}from"./jsx-runtime.D3GSbgeI.js";import"./index.yBjzXJbu.js";function a({lang:e}){return r.jsx("a",{href:void 0,rel:"noopener noreferrer",target:"_blank",className:"inline-flex items-center rounded-xl bg-black px-4 py-2 text-white dark:bg-white dark:text-black hover:opacity-90",children:e==="ja"?"予約する（Google カレンダー）":"Book on Google Calendar"})}export{a as default};

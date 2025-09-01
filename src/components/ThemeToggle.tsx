@@ -1,12 +1,40 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function ThemeToggle() {
   const [isDark, setIsDark] = useState<boolean>(() => {
     if (typeof window === 'undefined') return false;
-    const saved = localStorage.getItem('theme');
-    if (saved) return saved === 'dark';
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    // Always check DOM state first - it's the source of truth
+    const domHasDark = document.documentElement.classList.contains('dark');
+    return domHasDark;
   });
+
+  // Sync with DOM state after hydration and set up observer
+  useEffect(() => {
+    const syncWithDOM = () => {
+      const domHasDark = document.documentElement.classList.contains('dark');
+      setIsDark(domHasDark);
+    };
+
+    // Sync immediately
+    syncWithDOM();
+
+    // Watch for changes to the document element's class list
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+          syncWithDOM();
+        }
+      });
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <button
