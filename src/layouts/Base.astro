@@ -24,7 +24,7 @@ const alternates = buildAlternateLinks(site, Astro.url.pathname);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{copy.siteName}</title>
-  <script is:inline>{`(function(){try{var d=document.documentElement;var t=localStorage.getItem('theme');var m=window.matchMedia('(prefers-color-scheme: dark)').matches;var dark=t? t==='dark': m;d.classList.toggle('dark',dark);d.setAttribute('data-theme',dark?'dark':'light');}catch(e){}})();`}</script>
+  <script is:inline>(function(){try{var d=document.documentElement;var t=localStorage.getItem('theme');var m=window.matchMedia('(prefers-color-scheme: dark)').matches;var dark=t? t==='dark': m;d.classList.toggle('dark',dark);d.setAttribute('data-theme',dark?'dark':'light');}catch(e){}})();</script>
     <link rel="canonical" href={canonical} />
     {alternates.map(a => (
       <link rel="alternate" hreflang={a.hrefLang} href={a.href} />
