@@ -1,0 +1,35 @@
+---
+import BookingButton from '../../components/BookingButton';
+import { t } from '../../i18n';
+import Base from '../../layouts/Base.astro';
+const lang = 'ja' as const;
+const copy = t(lang);
+---
+
+<Base>
+  <section class="py-16 text-center">
+    <h1 class="text-4xl md:text-6xl font-bold mb-6">{copy.hero.title}</h1>
+    <p class="mb-8 opacity-80">嬬恋でカット・フェード・カラー・グルーミング。</p>
+    <picture class="block mx-auto max-w-4xl mb-10">
+      <img
+        src={Astro.props?.heroOptimized?.src || '/src/assets/images/hero-placeholder.svg'}
+        width="1200"
+        height="675"
+        loading="lazy"
+        decoding="async"
+        alt={copy.hero.imageAlt}
+        class="w-full h-auto rounded-xl shadow-lg ring-1 ring-black/10 dark:ring-white/10"
+      />
+    </picture>
+    <BookingButton client:load lang={lang} />
+  </section>
+
+  <section class="grid gap-6 md:grid-cols-2 py-10">
+    <a href="/ja/services/haircuts" class="rounded-2xl border p-6 hover:bg-black/5 dark:hover:bg-white/10">
+      ✂️ {copy.categories.haircuts}
+    </a>
+    <a href="/ja/services/color" class="rounded-2xl border p-6 hover:bg-black/5 dark:hover:bg-white/10">
+      🎨 {copy.categories.color}
+    </a>
+  </section>
+</Base>
