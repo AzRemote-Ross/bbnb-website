@@ -3,11 +3,7 @@ import LanguageSwitcher from '../components/LanguageSwitcher';
 import ThemeToggle from '../components/ThemeToggle';
 import { getLangFromPath, t } from '../i18n';
 // buildLocalBusinessJsonLd is used inside the HTML template; ESLint's parser does not detect that usage.
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-// buildLocalBusinessJsonLd used inside script tag JSON serialization
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 // Minimal inline JSON-LD builder to avoid unused import hint while keeping single source of truth.
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { buildLocalBusinessJsonLd } from '../lib/business'; // used inside JSON-LD script
 import { buildCanonical, buildAlternateLinks } from '../lib/seo';
 import "../styles/global.css";
@@ -24,7 +20,7 @@ const alternates = buildAlternateLinks(site, Astro.url.pathname);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{copy.siteName}</title>
-  <script is:inline>(function(){try{var d=document.documentElement;var t=localStorage.getItem('theme');var m=window.matchMedia('(prefers-color-scheme: dark)').matches;var dark=t? t==='dark': m;d.classList.toggle('dark',dark);d.setAttribute('data-theme',dark?'dark':'light');}catch(e){}})();</script>
+  <script is:inline>(function(){try{var d=document.documentElement;var t=localStorage.getItem('theme');var m=window.matchMedia('(prefers-color-scheme: dark)').matches;var dark=t? t==='dark': m;d.classList.toggle('dark',dark);d.setAttribute('data-theme',dark?'dark':'light');}catch(_){/* Theme detection failed, continue without dark mode */}})();</script>
     <link rel="canonical" href={canonical} />
     {alternates.map(a => (
       <link rel="alternate" hreflang={a.hrefLang} href={a.href} />
