@@ -1,0 +1,16 @@
+---
+const { title, sub, price, minutes } = Astro.props as {
+  title: string; sub?: string; price: number; minutes?: string | number;
+};
+---
+
+<div class="rounded-2xl border p-5 flex items-center justify-between">
+  <div>
+    <h3 class="text-lg font-semibold">{title}</h3>
+    {sub && <p class="opacity-70 text-sm">{sub}</p>}
+  </div>
+  <div class="text-right">
+    {minutes && <div class="opacity-70 text-sm">{minutes}</div>}
+    <div class="text-xl font-bold">¥{(Number(price)||0).toLocaleString()}</div>
+  </div>
+</div>

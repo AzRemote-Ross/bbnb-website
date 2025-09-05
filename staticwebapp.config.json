@@ -1,0 +1,29 @@
+{
+  "routes": [
+    {
+      "route": "/",
+      "rewrite": "/en/index.html"
+    },
+    {
+      "route": "/en/*",
+      "rewrite": "/en/index.html"
+    },
+    {
+      "route": "/ja/*",
+      "rewrite": "/ja/index.html"
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "/en/index.html",
+    "exclude": [
+      "/api/*"
+    ]
+  },
+  "globalHeaders": {
+    "X-Frame-Options": "DENY",
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Permissions-Policy": "geolocation=(), camera=()",
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+  }
+}

@@ -1,0 +1,15 @@
+---
+import PriceCard from '../../../components/PriceCard.astro';
+import { categories } from '../../../data/pricing';
+import Base from '../../../layouts/Base.astro';
+const cat = categories.find(c => c.slug === 'color')!;
+---
+
+<Base>
+  <h1 class="text-3xl font-bold mb-6">{cat.en}</h1>
+  <div class="grid gap-4">
+    {cat.items.map(item => (
+      <PriceCard title={item.en} sub={"from"} price={item.price} minutes={`${item.minutes ?? 30} min`} />
+    ))}
+  </div>
+</Base>

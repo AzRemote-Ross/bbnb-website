@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; }
+
+/* Modern CSS Custom Properties for Theme */
+:root {
+  --primary-gold: #D4AF37;
+  --primary-gold-light: #F4E4A6;
+  --primary-gold-dark: #B8941F;
+  --accent-brown: #8B4513;
+  --accent-brown-light: #A0522D;
+  --text-charcoal: #2C2C2C;
+  --background-warm: #FEFEFE;
+  --background-cream: #FAF8F5;
+  --border-light: #E5E5E5;
+  --shadow-warm: rgba(212, 175, 55, 0.1);
+}
+
+[data-theme="dark"] {
+  --primary-gold: #F4E4A6;
+  --primary-gold-light: #FFF8DC;
+  --primary-gold-dark: #D4AF37;
+  --accent-brown: #CD853F;
+  --accent-brown-light: #DEB887;
+  --text-charcoal: #E5E5E5;
+  --background-warm: #1A1A1A;
+  --background-cream: #2C2C2C;
+  --border-light: #404040;
+  --shadow-warm: rgba(244, 228, 166, 0.1);
+}
+
+/* Typography improvements */
+.font-display {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Modern button styles */
+.btn-primary {
+  @apply bg-gradient-to-r from-yellow-600 to-yellow-500 hover:from-yellow-700 hover:to-yellow-600 text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5;
+}
+
+.btn-secondary {
+  @apply border-2 border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300;
+}
+
+/* Card enhancements */
+.card-modern {
+  @apply bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100 dark:border-gray-700;
+}
+
+/* Section styling */
+.section-padding {
+  @apply py-16 md:py-24;
+}
+
+/* Gradient text */
+.text-gradient {
+  @apply bg-gradient-to-r from-yellow-600 via-yellow-500 to-amber-500 bg-clip-text text-transparent;
+}

@@ -1,0 +1,53 @@
+---
+import LanguageSwitcher from '../components/LanguageSwitcher';
+import ThemeToggle from '../components/ThemeToggle';
+import { getLangFromPath, t } from '../i18n';
+// buildLocalBusinessJsonLd is used inside the HTML template; ESLint's parser does not detect that usage.
+// Minimal inline JSON-LD builder to avoid unused import hint while keeping single source of truth.
+import { buildLocalBusinessJsonLd } from '../lib/business'; // used inside JSON-LD script
+import { buildCanonical, buildAlternateLinks } from '../lib/seo';
+import "../styles/global.css";
+const lang = getLangFromPath(Astro.url.pathname);
+const copy = t(lang);
+const site = new URL(import.meta.env?.SITE || Astro.site || 'http://localhost:4321');
+const canonical = buildCanonical(site, Astro.url.pathname);
+const alternates = buildAlternateLinks(site, Astro.url.pathname);
+// JSON-LD will be built inline in the head for minimal footprint
+---
+
+<html lang={lang} class="scroll-smooth font-body">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{copy.siteName}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script is:inline>(function(){try{var d=document.documentElement;var t=localStorage.getItem('theme');var m=window.matchMedia('(prefers-color-scheme: dark)').matches;var dark=t? t==='dark': m;d.classList.toggle('dark',dark);d.setAttribute('data-theme',dark?'dark':'light');}catch(_){/* Theme detection failed, continue without dark mode */}})();</script>
+    <link rel="canonical" href={canonical} />
+    {alternates.map(a => (
+      <link rel="alternate" hreflang={a.hrefLang} href={a.href} />
+    ))}
+  <script is:inline type="application/ld+json">{JSON.stringify(buildLocalBusinessJsonLd(lang))}</script>
+  </head>
+  <body class="bg-warm-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 font-body antialiased">
+    <header class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-warm-200 dark:border-gray-700">
+      <a href={lang === 'ja' ? '/ja/' : '/en/'} class="font-display font-bold text-2xl text-barbershop-gold-500 hover:text-barbershop-gold-600 transition-colors">{copy.siteName}</a>
+      <nav class="flex items-center gap-6">
+        <a href={`/${lang}/services/`} class="text-gray-700 dark:text-gray-300 hover:text-barbershop-gold-500 font-medium transition-colors">{copy.nav.services}</a>
+        <a href={`/${lang}/contact`} class="text-gray-700 dark:text-gray-300 hover:text-barbershop-gold-500 font-medium transition-colors">{copy.nav.contact}</a>
+        <div class="flex items-center gap-3 border-l border-warm-200 dark:border-gray-700 pl-6">
+          <LanguageSwitcher client:load current={lang} />
+          <ThemeToggle client:load />
+        </div>
+      </nav>
+    </header>
+    <main class="mx-auto max-w-7xl px-6 lg:px-8">
+      <slot />
+    </main>
+    <footer class="mx-auto max-w-7xl p-6 lg:px-8 mt-16 border-t border-warm-200 dark:border-gray-700 bg-warm-100 dark:bg-gray-800">
+      <div class="text-center text-gray-600 dark:text-gray-400">
+        <p>© {new Date().getFullYear()} {copy.siteName} • Professional Barbershop Services</p>
+      </div>
+    </footer>
+  </body>
+</html>

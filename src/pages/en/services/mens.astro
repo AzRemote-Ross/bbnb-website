@@ -1,0 +1,157 @@
+---
+import BookingButton from '../../../components/BookingButton';
+import Base from '../../../layouts/Base.astro';
+---
+
+<Base>
+  <!-- Hero Section -->
+  <section class="section-padding bg-hero-gradient">
+    <div class="text-center">
+      <h1 class="font-display text-5xl md:text-6xl font-bold mb-6 text-gradient">
+        Men's Services
+      </h1>
+      <p class="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+        Professional grooming services designed specifically for the modern man. From classic cuts to contemporary styles.
+      </p>
+      
+      <div class="max-w-4xl mx-auto mb-12">
+        <img
+          src="https://images.unsplash.com/photo-1622286346003-c3d0e2d5f7d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
+          alt="Professional men's haircut in progress"
+          class="w-full h-[400px] object-cover rounded-3xl shadow-warm-lg"
+        />
+      </div>
+
+      <BookingButton client:load lang="en" />
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="section-padding">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Classic Cuts -->
+      <div class="card-modern p-8">
+        <div class="mb-6">
+          <img 
+            src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+            alt="Classic men's haircut"
+            class="w-full h-48 object-cover rounded-xl"
+          />
+        </div>
+        <h3 class="font-display text-2xl font-semibold text-barbershop-gold-600 mb-3">Classic Cuts</h3>
+        <p class="text-gray-600 dark:text-gray-300 mb-4">
+          Timeless styles that never go out of fashion. Professional scissor cuts with attention to detail.
+        </p>
+        <div class="border-t border-gray-200 dark:border-gray-700 pt-4">
+          <p class="font-semibold text-barbershop-gold-600">From ¥3,000 • 30-45 min</p>
+        </div>
+      </div>
+
+      <!-- Modern Fades -->
+      <div class="card-modern p-8">
+        <div class="mb-6">
+          <img 
+            src="https://images.unsplash.com/photo-1621647376380-6e6b999e9da1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+            alt="Modern fade haircut"
+            class="w-full h-48 object-cover rounded-xl"
+          />
+        </div>
+        <h3 class="font-display text-2xl font-semibold text-barbershop-gold-600 mb-3">Modern Fades</h3>
+        <p class="text-gray-600 dark:text-gray-300 mb-4">
+          Contemporary fade cuts including skin fades, taper fades, and gradient styles for the modern gentleman.
+        </p>
+        <div class="border-t border-gray-200 dark:border-gray-700 pt-4">
+          <p class="font-semibold text-barbershop-gold-600">From ¥3,800 • 45-60 min</p>
+        </div>
+      </div>
+
+      <!-- Beard Grooming -->
+      <div class="card-modern p-8">
+        <div class="mb-6">
+          <img 
+            src="https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+            alt="Professional beard grooming"
+            class="w-full h-48 object-cover rounded-xl"
+          />
+        </div>
+        <h3 class="font-display text-2xl font-semibold text-barbershop-gold-600 mb-3">Beard Grooming</h3>
+        <p class="text-gray-600 dark:text-gray-300 mb-4">
+          Complete beard care including trimming, shaping, and styling. Professional beard oils and treatments available.
+        </p>
+        <div class="border-t border-gray-200 dark:border-gray-700 pt-4">
+          <p class="font-semibold text-barbershop-gold-600">From ¥2,500 • 30 min</p>
+        </div>
+      </div>
+
+      <!-- Hot Towel Shave -->
+      <div class="card-modern p-8">
+        <div class="mb-6">
+          <img 
+            src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+            alt="Traditional hot towel shave"
+            class="w-full h-48 object-cover rounded-xl"
+          />
+        </div>
+        <h3 class="font-display text-2xl font-semibold text-barbershop-gold-600 mb-3">Hot Towel Shave</h3>
+        <p class="text-gray-600 dark:text-gray-300 mb-4">
+          Traditional straight razor shave with hot towel treatment. The ultimate in luxury grooming experience.
+        </p>
+        <div class="border-t border-gray-200 dark:border-gray-700 pt-4">
+          <p class="font-semibold text-barbershop-gold-600">From ¥4,500 • 45 min</p>
+        </div>
+      </div>
+
+      <!-- Hair Styling -->
+      <div class="card-modern p-8">
+        <div class="mb-6">
+          <img 
+            src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+            alt="Professional men's hair styling"
+            class="w-full h-48 object-cover rounded-xl"
+          />
+        </div>
+        <h3 class="font-display text-2xl font-semibold text-barbershop-gold-600 mb-3">Hair Styling</h3>
+        <p class="text-gray-600 dark:text-gray-300 mb-4">
+          Professional styling for special occasions. Includes premium products and personalized consultation.
+        </p>
+        <div class="border-t border-gray-200 dark:border-gray-700 pt-4">
+          <p class="font-semibold text-barbershop-gold-600">From ¥2,000 • 20 min</p>
+        </div>
+      </div>
+
+      <!-- Hair Wash & Treatment -->
+      <div class="card-modern p-8">
+        <div class="mb-6">
+          <img 
+            src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+            alt="Professional hair wash and treatment"
+            class="w-full h-48 object-cover rounded-xl"
+          />
+        </div>
+        <h3 class="font-display text-2xl font-semibold text-barbershop-gold-600 mb-3">Hair Wash & Treatment</h3>
+        <p class="text-gray-600 dark:text-gray-300 mb-4">
+          Relaxing hair wash with scalp massage and nourishing treatments to keep your hair healthy.
+        </p>
+        <div class="border-t border-gray-200 dark:border-gray-700 pt-4">
+          <p class="font-semibold text-barbershop-gold-600">From ¥1,500 • 20 min</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section-padding bg-warm-100 dark:bg-gray-800">
+    <div class="text-center">
+      <h2 class="font-display text-3xl font-bold text-gray-900 dark:text-white mb-4">
+        Ready for a Fresh Look?
+      </h2>
+      <p class="text-gray-600 dark:text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
+        Experience the difference that professional expertise and attention to detail can make.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <BookingButton client:load lang="en" />
+        <a href="/en/contact" class="btn-secondary">Contact Us</a>
+      </div>
+    </div>
+  </section>
+</Base>
