@@ -7,29 +7,174 @@ const copy = t(lang);
 ---
 
 <Base>
-  <section class="py-16 text-center">
-    <h1 class="text-4xl md:text-6xl font-bold mb-6">{copy.hero.title}</h1>
-    <p class="mb-8 opacity-80">Cuts, fades, color & grooming in Tsumagoi.</p>
-    <picture class="block mx-auto max-w-4xl mb-10">
-      <img
-        src={Astro.props?.heroOptimized?.src || '/src/assets/images/hero-placeholder.svg'}
-        width="1200"
-        height="675"
-        loading="lazy"
-        decoding="async"
-        alt={copy.hero.imageAlt}
-        class="w-full h-auto rounded-xl shadow-lg ring-1 ring-black/10 dark:ring-white/10"
-      />
-    </picture>
-    <BookingButton client:load lang={lang} />
+  <!-- Hero Section -->
+  <section class="relative section-padding bg-hero-gradient">
+    <div class="text-center">
+      <h1 class="font-display text-5xl md:text-7xl font-bold mb-6 text-gradient leading-tight">
+        {copy.hero.title}
+      </h1>
+      <p class="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+        Experience premium cuts, styling, and grooming services in the heart of Tsumagoi. Where tradition meets modern excellence.
+      </p>
+      
+      <!-- Hero Image -->
+      <div class="relative max-w-4xl mx-auto mb-12">
+        <img
+          src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
+          alt="Professional barbershop interior with vintage styling"
+          class="w-full h-[400px] md:h-[500px] object-cover rounded-3xl shadow-warm-lg ring-1 ring-barbershop-gold-200 dark:ring-barbershop-gold-800"
+          loading="eager"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-3xl"></div>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <BookingButton client:load lang={lang} />
+        <a href="#about" class="btn-secondary">Learn More About Us</a>
+      </div>
+    </div>
   </section>
 
-  <section class="grid gap-6 md:grid-cols-2 py-10">
-    <a href="/en/services/haircuts" class="rounded-2xl border p-6 hover:bg-black/5 dark:hover:bg-white/10">
-      ✂️ {copy.categories.haircuts}
-    </a>
-    <a href="/en/services/color" class="rounded-2xl border p-6 hover:bg-black/5 dark:hover:bg-white/10">
-      🎨 {copy.categories.color}
-    </a>
+  <!-- Services Preview -->
+  <section class="section-padding">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-4xl font-bold text-gray-900 dark:text-white mb-4">Our Services</h2>
+      <p class="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
+        Professional grooming services tailored for everyone in the family
+      </p>
+    </div>
+    
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-8">
+      <a href="/en/services/mens" class="card-modern p-8 text-center group">
+        <div class="mb-4">
+          <img src="https://images.unsplash.com/photo-1622286346003-c3d0e2d5f7d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+               alt="Men's haircut services" 
+               class="w-full h-48 object-cover rounded-xl mb-4 group-hover:scale-105 transition-transform duration-300">
+        </div>
+        <h3 class="font-display text-xl font-semibold text-barbershop-gold-600 mb-2">👨 Men's Services</h3>
+        <p class="text-gray-600 dark:text-gray-300">Classic cuts, modern fades, beard grooming</p>
+      </a>
+      
+      <a href="/en/services/womens" class="card-modern p-8 text-center group">
+        <div class="mb-4">
+          <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+               alt="Women's styling services" 
+               class="w-full h-48 object-cover rounded-xl mb-4 group-hover:scale-105 transition-transform duration-300">
+        </div>
+        <h3 class="font-display text-xl font-semibold text-barbershop-gold-600 mb-2">👩 Women's Services</h3>
+        <p class="text-gray-600 dark:text-gray-300">Precision cuts, styling, color treatments</p>
+      </a>
+      
+      <a href="/en/services/kids" class="card-modern p-8 text-center group">
+        <div class="mb-4">
+          <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+               alt="Kids haircut services" 
+               class="w-full h-48 object-cover rounded-xl mb-4 group-hover:scale-105 transition-transform duration-300">
+        </div>
+        <h3 class="font-display text-xl font-semibold text-barbershop-gold-600 mb-2">👶 Kids Services</h3>
+        <p class="text-gray-600 dark:text-gray-300">Gentle cuts, patient service, fun experience</p>
+      </a>
+    </div>
+
+    <!-- Traditional Services -->
+    <div class="grid gap-6 md:grid-cols-2">
+      <a href="/en/services/haircuts" class="card-modern p-6 hover:bg-barbershop-gold-50 dark:hover:bg-barbershop-gold-900/20 transition-colors">
+        <div class="flex items-center space-x-4">
+          <div class="text-4xl">✂️</div>
+          <div>
+            <h3 class="font-semibold text-lg text-barbershop-gold-600">{copy.categories.haircuts}</h3>
+            <p class="text-gray-600 dark:text-gray-300">Professional cutting and styling</p>
+          </div>
+        </div>
+      </a>
+      <a href="/en/services/color" class="card-modern p-6 hover:bg-barbershop-gold-50 dark:hover:bg-barbershop-gold-900/20 transition-colors">
+        <div class="flex items-center space-x-4">
+          <div class="text-4xl">🎨</div>
+          <div>
+            <h3 class="font-semibold text-lg text-barbershop-gold-600">{copy.categories.color}</h3>
+            <p class="text-gray-600 dark:text-gray-300">Color treatments and highlights</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- About Us Section -->
+  <section id="about" class="section-padding bg-warm-100 dark:bg-gray-800">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="font-display text-4xl font-bold text-gray-900 dark:text-white mb-6">About BBnB Barbershop</h2>
+        <div class="space-y-4 text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+          <p>
+            Welcome to BBnB Barbershop, where traditional craftsmanship meets contemporary style. Located in the charming town of Tsumagoi, we've been serving our community with exceptional grooming services that blend time-honored techniques with modern trends.
+          </p>
+          <p>
+            Our skilled barbers are passionate about their craft, ensuring every client leaves feeling confident and looking their absolute best. We pride ourselves on creating a welcoming atmosphere where quality service and attention to detail are our top priorities.
+          </p>
+          <p>
+            From classic cuts to modern styling, color treatments to beard grooming, we offer comprehensive services for the entire family. Experience the difference that professional expertise and genuine care can make.
+          </p>
+        </div>
+        
+        <!-- Quick Access Buttons -->
+        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+          <a href="#map" class="btn-secondary">📍 View Location</a>
+          <a href="/en/contact" class="text-barbershop-gold-600 hover:text-barbershop-gold-700 font-medium">Contact Us →</a>
+        </div>
+      </div>
+      
+      <div class="grid grid-cols-2 gap-4">
+        <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+             alt="Barber tools and equipment" 
+             class="rounded-xl shadow-warm h-48 object-cover">
+        <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+             alt="Professional barbershop chair" 
+             class="rounded-xl shadow-warm h-48 object-cover mt-8">
+        <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+             alt="Barber styling client hair" 
+             class="rounded-xl shadow-warm h-48 object-cover -mt-8">
+        <img src="https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+             alt="Professional beard grooming" 
+             class="rounded-xl shadow-warm h-48 object-cover">
+      </div>
+    </div>
+  </section>
+
+  <!-- Location & Booking Section -->
+  <section id="map" class="section-padding">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-4xl font-bold text-gray-900 dark:text-white mb-4">Visit Us Today</h2>
+      <p class="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
+        Conveniently located in Tsumagoi. Easy to find, easy to book.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <!-- Map Placeholder -->
+      <div class="bg-gradient-to-br from-barbershop-gold-100 to-barbershop-brown-100 dark:from-barbershop-gold-900 dark:to-barbershop-brown-900 rounded-2xl p-8 h-80 flex items-center justify-center">
+        <div class="text-center">
+          <div class="text-6xl mb-4">🗺️</div>
+          <h3 class="font-display text-2xl font-semibold text-barbershop-gold-600 mb-2">Google Maps Integration</h3>
+          <p class="text-gray-600 dark:text-gray-300">Interactive map coming soon</p>
+          <button class="btn-primary mt-4">View on Google Maps</button>
+        </div>
+      </div>
+
+      <!-- Quick Booking -->
+      <div class="card-modern p-8">
+        <h3 class="font-display text-2xl font-semibold text-barbershop-gold-600 mb-6">Quick Reservation</h3>
+        <div class="space-y-4">
+          <p class="text-gray-600 dark:text-gray-300">
+            Ready for a fresh new look? Book your appointment with just a few clicks.
+          </p>
+          <div class="border-l-4 border-barbershop-gold-400 pl-4 py-2">
+            <p class="font-semibold text-barbershop-gold-600">Walk-ins Welcome</p>
+            <p class="text-sm text-gray-600 dark:text-gray-300">Or schedule in advance for guaranteed service</p>
+          </div>
+          <BookingButton client:load lang={lang} />
+        </div>
+      </div>
+    </div>
   </section>
 </Base>
